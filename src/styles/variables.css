@@ -1,0 +1,22 @@
+/* src/styles/variables.css */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --text-glow: #ffffff; /* Subtle green glow */
+  --bg-color: #1e1e1e; /* Dark background, cyber feel */
+  --highlight: rgb(120, 120, 120); /* Softer highlight */
+  --neon-purple: #10a9b4; /* Muted cyber purple */
+  --border-color: rgba(255, 255, 255, 0.2); /* Subtle border glow */
+  --main-font: 'Fira Code', monospace;
+  --accent-color: #ffcc00;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-glow);
+  font-family: var(--main-font);
+  margin: 0;
+  padding: 0;
+}
+
+/* Add any other global styles here */

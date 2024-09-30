@@ -1,0 +1,127 @@
+/* src/page/contact/Contact.css */
+@import '../../styles/variables.css';
+
+.vim-inspired {
+  background-color: var(--bg-color);
+  color: var(--text-glow);
+  font-family: var(--main-font);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 15px 0;
+  margin: 0;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+header nav ul li {
+  margin: 0 20px;
+}
+
+header nav ul li a {
+  color: var(--text-glow);
+  text-decoration: none;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+header nav ul li a.active,
+header nav ul li a:hover {
+  color: var(--neon-purple);
+  text-shadow: 0 0 5px var(--neon-purple);
+}
+
+.contact-main {
+  flex: 1;
+  padding: 40px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-color);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 10px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-group label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  pointer-events: none;
+  transition: 0.3s ease all;
+  color: var(--highlight);
+}
+
+.form-group input:focus ~ label,
+.form-group input:valid ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:valid ~ label {
+  top: -20px;
+  font-size: 0.8rem;
+  color: var(--neon-purple);
+}
+
+.focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--neon-purple);
+  transition: 0.4s;
+}
+
+.form-group input:focus ~ .focus-border,
+.form-group textarea:focus ~ .focus-border {
+  width: 100%;
+}
+
+.submit-button {
+  background-color: var(--neon-purple);
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0e8a94;
+}
+
+footer {
+  background-color: var(--bg-color);
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
