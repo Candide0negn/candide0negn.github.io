@@ -1,3 +1,5 @@
+/* src/page/home/Home.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -75,6 +77,19 @@ nav a:before {
 nav a:hover:before {
   visibility: visible;
   transform: scaleX(1);
+}
+
+/* Styles for disabled links */
+nav .disabled-link {
+  color: gray;
+  cursor: not-allowed;
+  pointer-events: none; /* Prevents any interaction */
+  text-shadow: none;
+}
+
+nav .disabled-link:hover {
+  color: gray; /* Maintains gray color on hover */
+  text-shadow: none;
 }
 
 main {

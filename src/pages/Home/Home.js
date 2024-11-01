@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-
 import myStoryPic from '../../assets/vv.png';           
 import welcomeBanner from '../../assets/lmn.png';        
-import projectsBanner from '../../assets/lmn.png';      
+import projectsBanner from '../../assets/aa.png';      
 
 const Home = () => {
   const [commandMode, setCommandMode] = useState(false);
@@ -35,16 +34,71 @@ const Home = () => {
     }
   };
 
+  const handleLinkClick = (e) => {
+    e.preventDefault();
+    alert('This section is under construction.');
+  };
+
   return (
     <div className="vim-inspired" onKeyDown={handleKeyDown} tabIndex="0">
       <header>
         <nav>
           <ul>
-            <li><Link to="/projects">Projects</Link></li>
-            <li><Link to="/reflections">Reflections</Link></li>
-            <li><Link to="/research">Research</Link></li>
-            <li><Link to="/library">Library</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li>
+              <Link 
+                to="/projects" 
+                className="disabled-link" 
+                onClick={handleLinkClick} 
+                aria-disabled="true" 
+                title="Coming Soon"
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/reflections" 
+                className="disabled-link" 
+                onClick={handleLinkClick} 
+                aria-disabled="true" 
+                title="Coming Soon"
+              >
+                Reflections
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/research" 
+                className="disabled-link" 
+                onClick={handleLinkClick} 
+                aria-disabled="true" 
+                title="Coming Soon"
+              >
+                Research
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/library" 
+                className="disabled-link" 
+                onClick={handleLinkClick} 
+                aria-disabled="true" 
+                title="Coming Soon"
+              >
+                Library
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/contact" 
+                className="disabled-link" 
+                onClick={handleLinkClick} 
+                aria-disabled="true" 
+                title="Coming Soon"
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>
@@ -63,14 +117,14 @@ const Home = () => {
         <section id="about" className="section animate-slide-in">
           <h2>About Me</h2>
           <img src={myStoryPic} alt="My Story" className="profile-image" />
-          <p>Hey, I'm Candide, a CS student with a passion for technology and software development. I love making software and automating stuff—basically anything that lets me dive deeper into the world of tech. I've taken an interest in A.I and I'm particularly fascinated by bio-inspired approaches in artificial intelligence, like neuroevolution—especially NEAT (NeuroEvolution of Augmenting Topologies)—and Kenneth Stanley's novelty search.
+          <p>Hey, I'm Candide, a CS student with a passion for technology and software development but mostly currently working on Web development. I love making software and automating stuff—basically anything that lets me dive deeper into the world of tech. I've taken an interest in A.I and I'm particularly fascinated by bio-inspired approaches in artificial intelligence, like neuroevolution—especially NEAT (NeuroEvolution of Augmenting Topologies)—and Kenneth Stanley's novelty search.
 
 When I'm not coding, you'll find me immersed in books. I delve into everything from the classics by Goethe and Dostoevsky to the philosophies of Schopenhauer, Kant, Hegel, and Nietzsche. Sci-fi authors like Ian M. Banks, Asimov, and Philip K. Dick fuel my imagination, and I'm also a huge fan of music and anime.
 
 I'm inspired by philosophies that emphasize overcoming fear, the importance of self-trust, and thoughtful learning. These ideas motivate me in my pursuit of AI research and software development.
 
 I'm currently working on some exciting projects that I hope will improve the world, much like how the philosophers and scientists of old sought the philosopher's stone.</p>
-          <p>My journey: <code>human.evolve(AI_researcher)</code></p>
+          <p>Current journey: <code>Innovating with A.I</code></p>
         </section>
 
         <section id="projects" className="section projects-section animate-fade-in">
@@ -78,8 +132,8 @@ I'm currently working on some exciting projects that I hope will improve the wor
           {/* Projects Banner Image */}
           <img src={projectsBanner} alt="Projects Banner" className="banner-image" />
           <div className="projects-content">
-            <h3>!!!Under construction!!!</h3>
-            <p>Here’s where I document my attempts to make sense of AI papers (because who needs sleep, right?) and level up my programming skills. I'll be sharing what I've learned, the bugs I've befriended, and the wild ideas that keep me up at night. I've got some big plans brewing, like harnessing generative AI to create super helpful tools across different fields. This space is all about sharing, keeping track of my progress, and tossing around ideas that pop into my head.
+            <h3>!!!SITE UNDER CONSTRUCTION!!!</h3>
+            <p>Here’s where I will be documenting my attempts to make sense of AI papers (because who needs sleep, right?) and level up my programming skills. I'll be sharing what I've learned, the bugs I've befriended, and the wild ideas that keep me up at night. I've got some big plans brewing, like harnessing generative AI to create super helpful tools across different fields. This space is all about sharing, keeping track of my progress, and tossing around ideas that pop into my head.
             Feel free to browse around, see what I've been up to, and maybe even pick up something new along the way. Whether you're here intentionally or just stumbled upon this corner of the internet, welcome aboard!</p>
             <p>Project status: <code>cargo run brainstorm</code></p>
           </div>
