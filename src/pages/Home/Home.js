@@ -124,7 +124,7 @@ const Home = () => {
 
             <p>As I was using Pallas I got frustrated too. learn to program? I had to pick option C. Anatomy? Pick option D. Philosophy, history, music theory — all of it, same format. It didn't feel right.</p>
 
-            <p>So I thought — If I wanted to learn everything, why not learn it the way it's meant to be learned?</p>
+            <p>So I thought — If I wanted to learn anything, why not learn it the way it's meant to be learned?</p>
 
             <p>If I'm learning to code, I should write code.<br />
               If I'm learning anatomy, I should look at a diagram and label it.<br />
