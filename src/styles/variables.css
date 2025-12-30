@@ -1,22 +1,102 @@
 /* src/styles/variables.css */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
+/* Light Theme (Default) */
 :root {
-  --text-glow: #ffffff; /* Subtle green glow */
-  --bg-color: #1e1e1e; /* Dark background, cyber feel */
-  --highlight: rgb(120, 120, 120); /* Softer highlight */
-  --neon-purple: #10a9b4; /* Muted cyber purple */
-  --border-color: rgba(255, 255, 255, 0.2); /* Subtle border glow */
+  /* Core palette */
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-tertiary: #f5f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+
+  /* Primary accent - techy cyan */
+  --accent: #00a88a;
+  --accent-bright: #00c9a7;
+  --accent-glow: rgba(0, 168, 138, 0.2);
+
+  /* Warm accent - for quotes and highlights */
+  --warm: #996633;
+  --warm-subtle: rgba(153, 102, 51, 0.08);
+
+  /* Borders & effects */
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 20px var(--accent-glow);
+
+  /* Typography */
   --main-font: 'Fira Code', monospace;
-  --accent-color: #ffcc00;
+
+  /* Transitions */
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark Theme (Night Mode) */
+:root[data-theme="dark"] {
+  /* Core palette - inverted */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+
+  /* Primary accent - brighter cyan in dark */
+  --accent: #00ffcc;
+  --accent-bright: #33ffdd;
+  --accent-glow: rgba(0, 255, 204, 0.15);
+
+  /* Warm accent - golden amber for dark mode */
+  --warm: #ffcc00;
+  --warm-subtle: rgba(255, 204, 0, 0.1);
+
+  /* Borders & effects */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 25px var(--accent-glow);
+}
+
+/* Global base styles */
+* {
+  transition: var(--theme-transition);
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-glow);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--main-font);
   margin: 0;
   padding: 0;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-/* Add any other global styles here */
+/* Selection styling */
+::selection {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* Scrollbar styling (webkit) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

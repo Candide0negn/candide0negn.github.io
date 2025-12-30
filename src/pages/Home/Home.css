@@ -1,201 +1,383 @@
 /* src/page/home/Home.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
-
-:root {
-  --text-glow: #ffffff;  /* Subtle green glow */
-  --bg-color: #1e1e1e;  /* Dark background, cyber feel */
-  --highlight: rgb(120, 120, 120);  /* Softer highlight */
-  --neon-purple: #10a9b4;  /* Muted cyber purple */
-  --border-color: rgba(255, 255, 255, 0.2);  /* Subtle border glow */
-  --main-font: 'Fira Code', monospace;
-}
-
-body {
-  background: var(--bg-color);
-  color: var(--text-glow);
+.vim-inspired {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--main-font);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
 
+/* Header */
 header {
   width: 100%;
-  background-color: var(--bg-color);
-  padding: 10px;
-  box-shadow: 0 0 2px var(--text-glow);  /* Small soft glow */
+  background-color: var(--bg-primary);
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-subtle);
   display: flex;
   justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  padding: 5px 0;
+  position: relative;
+}
+
+.header-container .theme-toggle {
+  position: absolute;
+  right: 0;
 }
 
 nav ul {
   display: flex;
-  justify-content: space-evenly;  /* Space out menu items evenly */
+  justify-content: center;
   align-items: center;
   list-style-type: none;
-  padding: 15px 0;
-  width: 90%;
-  max-width: 1200px;
-  border-bottom: 1px solid var(--border-color);  /* Add a subtle bottom border */
+  padding: 0;
+  margin: 0;
+  gap: 8px;
 }
 
 nav li {
-  margin: 0 20px;  /* Adds some space between each menu item */
+  margin: 0 12px;
 }
 
 nav a {
-  color: var(--text-glow);
+  color: var(--text-secondary);
   text-decoration: none;
   position: relative;
-  padding: 10px;  /* Adds padding around each link for better spacing */
-  transition: 0.3s ease-in-out;
-  font-size: 1.1rem;  /* Slightly larger font for clarity */
+  padding: 8px 4px;
+  transition: 0.2s ease;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
 }
 
 nav a:hover {
-  color: var(--neon-purple);
-  text-shadow: 0 0 3px var(--highlight), 0 0 5px var(--highlight);  /* Soft hover glow */
+  color: var(--accent);
 }
 
 nav a:before {
   content: '';
   position: absolute;
-  width: 100%;
-  height: 2px;
+  width: 0;
+  height: 1px;
   bottom: 0;
-  left: 0;
-  background-color: var(--highlight);
-  visibility: hidden;
-  transform: scaleX(0);
-  transition: all 0.3s ease-in-out;
+  left: 50%;
+  background-color: var(--accent);
+  transition: all 0.2s ease;
 }
 
 nav a:hover:before {
-  visibility: visible;
-  transform: scaleX(1);
+  width: 100%;
+  left: 0;
 }
 
-/* Styles for disabled links */
+/* Disabled links with tooltip */
 nav .disabled-link {
-  color: gray;
+  color: var(--text-muted);
   cursor: not-allowed;
-  pointer-events: none; /* Prevents any interaction */
-  text-shadow: none;
+  opacity: 0.5;
+  position: relative;
 }
 
-nav .disabled-link:hover {
-  color: gray; /* Maintains gray color on hover */
-  text-shadow: none;
-}
-
-main {
-  width: 80%;  /* Increased width for the content */
-  max-width: 1400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 2px solid var(--border-color);
-  box-shadow: 0 0 8px var(--border-color);
-  background-color: rgba(30, 30, 30, 0.8);
-  border-radius: 10px;
-  backdrop-filter: blur(5px);
-}
-
-section {
-  margin: 20px 0;
+nav .disabled-link::after {
+  content: "Not available yet — I'm busy working on other things";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
   border: 1px solid var(--border-color);
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  background-color: rgba(30, 30, 30, 0.9);  /* Darker background for contrast */
-  box-shadow: 0 0 5px var(--text-glow);  /* Small section glow */
 }
 
-h1, h2, h3 {
+nav .disabled-link:hover::after {
+  opacity: 1;
+}
+
+/* Main content area */
+main {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  box-sizing: border-box;
+}
+
+/* Sections - minimal, no cards */
+section {
+  margin: 80px 0;
+  padding: 0;
+  text-align: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+section:first-child {
+  margin-top: 40px;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
   font-family: var(--main-font);
-  text-transform: uppercase;
-  color: var(--text-glow);
-  text-shadow: 0 0 3px var(--highlight);
-  margin-bottom: 20px;
+  color: var(--text-primary);
+  font-weight: 400;
+  letter-spacing: -0.5px;
 }
 
 h1 {
-  font-size: 2.5rem;
-  color: rgb(255, 255, 255);  /* Cyber green */
+  font-size: 1.8rem;
+  margin-bottom: 30px;
 }
 
 h2 {
-  font-size: 2rem;
-  color: rgb(255, 204, 0);  /* Yellow for emphasis */
+  font-size: 1.3rem;
+  color: var(--accent);
+  margin-bottom: 25px;
+  text-transform: lowercase;
 }
 
 h3 {
-  font-size: 1.5rem;
-  color: rgb(102, 204, 255);  /* Soft blue for variety */
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
+/* Links */
 a {
-  color: var(--highlight);
-  text-shadow: 0 0 3px var(--highlight);
-  transition: color 0.3s ease;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 a:hover {
-  color: var(--neon-purple);
+  opacity: 0.8;
 }
 
+/* Profile Image */
 .profile-image {
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  border: 2px solid var(--text-glow);  /* Border glow around image */
-  box-shadow: 0 0 5px var(--text-glow);  /* Small glow effect */
-  padding-right: 1px;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 30px;
+  filter: grayscale(20%);
+  transition: all 0.3s ease;
 }
 
+.profile-image:hover {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+/* Banner images */
+.banner-image {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  opacity: 0.95;
+}
+
+/* Quotes - warm accent */
+.home-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.home-content p {
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--warm);
+  margin: 20px 0;
+  padding-left: 20px;
+  border-left: 2px solid var(--warm);
+  text-align: left;
+}
+
+.home-content p code {
+  color: var(--text-muted);
+  background: transparent;
+  font-style: normal;
+}
+
+/* Code styling */
 code {
   font-family: var(--main-font);
-  background-color: rgba(6, 80, 80, 0.2);
-  padding: 2px 4px;
-  border-radius: 4px;
+  background-color: var(--warm-subtle);
+  color: var(--warm);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.85em;
 }
 
+/* About section paragraphs */
+#about p {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  text-align: left;
+  max-width: 720px;
+  margin: 0 auto 20px auto;
+}
+
+#about p:last-child {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 30px;
+}
+
+/* Projects section */
+.projects-content {
+  text-align: left;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.projects-content p {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.projects-content p:last-child {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 30px;
+}
+
+/* Vim cursor */
 .vim-cursor {
   display: inline-block;
-  width: 0.6em;
-  height: 1.2em;
-  background-color: var(--text-glow);
-  animation: blink 1.2s step-end infinite;
+  width: 0.5em;
+  height: 1em;
+  background-color: var(--accent);
+  animation: blink 1s step-end infinite;
   vertical-align: text-bottom;
 }
 
 .vim-command-input {
   position: fixed;
-  bottom: 10px;
-  left: 10px;
-  background-color: #2d2d2d;
-  color: var(--text-glow);
-  border: none;
+  bottom: 20px;
+  left: 20px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   font-family: var(--main-font);
-  font-size: 14px;
-  padding: 5px;
-  width: 200px;
-  border: 1px solid var(--text-glow);
+  font-size: 13px;
+  padding: 10px 15px;
+  width: 220px;
+  border-radius: 6px;
+}
+
+.vim-command-input:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 @keyframes blink {
-  from, to { opacity: 0; }
-  50% { opacity: 1; }
+
+  from,
+  to {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
-/* Optional: Enhance the Quote Styling */
-.home-content p {
-  font-size: 1.2rem;
-  font-style: italic;
-  margin: 20px 0;
-  color: #ffcc00; /* Optional: Change color to make the quote stand out */
-  text-shadow: 0 0 5px var(--highlight);
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    padding: 40px 20px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  nav li {
+    margin: 0 8px;
+  }
+
+  section {
+    margin: 50px 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
 }

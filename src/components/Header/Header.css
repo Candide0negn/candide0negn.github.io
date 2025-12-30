@@ -1,57 +1,75 @@
 /* src/components/Header/Header.css */
+
 header {
-    width: 100%;
-    background-color: var(--bg-color);
-    padding: 10px;
-    box-shadow: 0 0 2px var(--text-glow); /* Small soft glow */
-    display: flex;
-    justify-content: center;
-  }
-  
-  nav ul {
-    display: flex;
-    justify-content: space-evenly; /* Space out menu items evenly */
-    align-items: center;
-    list-style-type: none;
-    padding: 15px 0;
-    width: 90%;
-    max-width: 1200px;
-    border-bottom: 1px solid var(--border-color); /* Subtle bottom border */
-  }
-  
-  nav li {
-    margin: 0 20px; /* Space between menu items */
-  }
-  
-  nav a {
-    color: var(--text-glow);
-    text-decoration: none;
-    position: relative;
-    padding: 10px; /* Padding around links */
-    transition: 0.3s ease-in-out;
-    font-size: 1.1rem; /* Slightly larger font */
-  }
-  
-  nav a:hover {
-    color: var(--neon-purple);
-    text-shadow: 0 0 3px var(--highlight), 0 0 5px var(--highlight); /* Soft hover glow */
-  }
-  
-  nav a:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--highlight);
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  nav a:hover:before {
-    visibility: visible;
-    transform: scaleX(1);
-  }
-  
+  width: 100%;
+  background-color: var(--bg-primary);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  padding: 10px 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  position: relative;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+nav a:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+nav a:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* Styles for disabled links */
+nav .disabled-link {
+  color: var(--text-muted);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+nav .disabled-link:hover {
+  color: var(--text-muted);
+}
